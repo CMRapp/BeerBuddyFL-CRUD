@@ -27,10 +27,10 @@ export const Brewery = (props) => {
             {/*use map to display current beers in array*/}
             {brewery.beers.map((beer, index) => (
                 <div key={index}>
-                    <div class="table-responsive">
+                    <div>
                         <table id="beer-listing" class="my-2 table table-warning table-hover border border-1 table-striped">
                             <tbody>
-                                <tr>
+                                <tr className='text-center'>
                                     <td>{beer.beerName}</td>
                                     <td>{beer.abv}%</td>
                                     <td>{beer.ibu}</td>
@@ -69,6 +69,7 @@ export const Brewery = (props) => {
                                 
                             </tbody>
                     </table>
+                    
                     {/* Display beer information */}
                     { beers({beers, breweryId: brewery.id, deleteBeer})}
                     

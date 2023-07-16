@@ -89,7 +89,7 @@ export const NewBeerForm = (props) => {
             
             <ModalFooter>
                 <button type='button' class='btn btn-warning hidden' id='updateCurrentBeer'>Update Beer</button>  
-                <button type='submit' onClick={onSubmit}>Add Beer</button>
+                <button type='submit' className='btn btn-warning' onClick={onSubmit}>Add Beer</button>
                 <button type='button' class='btn btn-secondary' id='cancelUpdate' onClick={hideModal}>Cancel</button>    
             </ModalFooter>
         </Modal>
