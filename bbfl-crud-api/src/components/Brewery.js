@@ -1,5 +1,7 @@
 import React from 'react';
 import { NewBeerForm } from './NewBeerForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import $ from 'jquery';
 
 //functional (stateless) component
 export const Brewery = (props) => {
@@ -15,16 +17,30 @@ export const Brewery = (props) => {
 
     const addNewBeer = (beer) => updateBrewery({ ...brewery, beers: [...brewery.beers, beer]});
     
+    
     const beers = () => (
         
-        <div id='body-div'>
-
+        <div className='container'>  
+            <table>
+            
+            </table>         
             {/*use map to display current beers in array*/}
             {brewery.beers.map((beer, index) => (
                 <div key={index}>
-                    Beer Name: {`${beer.beerName} ABV: ${beer.abv}% IBU: ${beer.ibu}`}<br/>
-                    Style: {`${beer.style}`}<br/>
-                    <button onClick={(e) => deleteBeer(beer.id)}>Delete</button>
+                    <div class="table-responsive">
+                        <table id="beer-listing" class="my-2 table table-warning table-hover border border-1 table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>{beer.beerName}</td>
+                                    <td>{beer.abv}%</td>
+                                    <td>{beer.ibu}</td>
+                                    <td>{beer.style}</td>
+                                    <td><button onClick={(e) => deleteBeer(beer.id)}><FontAwesomeIcon icon='fa-refresh'/></button></td>
+                                    <td><button onClick={(e) => deleteBeer(beer.id)}><FontAwesomeIcon icon='fa-ban'/></button></td>
+                                </tr>
+                            </tbody>                    
+                        </table>
+                    </div>             
                 </div>
             ))}
         </div>
@@ -32,12 +48,31 @@ export const Brewery = (props) => {
 
     //return complete brewery component
     return (
-        <div>
-            <h1>{brewery.breweryName}</h1>
-            {
-                beers({beers, breweryId: brewery.id, deleteBeer})
-            }
-            <NewBeerForm addNewBeer={addNewBeer} />
+        <div className='container mb-5' id='beer-listing'>
+            <div className='row'>
+
+                <div className='col-md-4'>
+                    <img className='brewery-logo' src={brewery.logoURL}/>
+                </div>
+
+                <div class='col-md-8'>
+                    <table class=" table table-warning table-hover border border-1 table-striped">
+                            <thead>
+                                <th class="border border-1 border-start-0">Beer Name</th>
+                                <th class="border border-1 border-start-0">ABV</th>
+                                <th class="border border-1 border-start-0">IBU</th>
+                                <th class="border border-1 border-start-0">Style</th>
+                                <th class="border border-1 border-start-0 text-center">Update</th>
+                                <th class="border border-1 border-start-0 text-center">Delete</th>
+                            </thead>
+                            <tbody></tbody>
+                    </table>
+                    {/* Display beer information */}
+                    { beers({beers, breweryId: brewery.id, deleteBeer})}
+                    
+                    <NewBeerForm addNewBeer={addNewBeer} />
+                </div>
+            </div>
         </div>
     );
 };

@@ -6,7 +6,7 @@ export default class Header extends React.Component{
         return (
             <header className='container-fluid bg-dark text-light py-2 h-100 d-inline-block'>
                 <nav className='navbar sticky-top navbar-expand-lg navbar-dark bg-dark nav-pills'>
-                    <div className='container'>http://dev.sciencebranding.com/wp-admin/post.php?post=11&action=elementor
+                    <div className='container'>
                         <a className='navbar-brand' href='index.html'>
                             <img src='./bb-fl-logo.png' alt='Beer Buddy FL Logo'/>
                         </a>

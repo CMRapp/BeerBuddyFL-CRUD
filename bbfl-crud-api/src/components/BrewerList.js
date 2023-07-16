@@ -21,19 +21,6 @@ export class BrewerList extends React.Component {
         this.fetchBreweries();
     };
 
-    populateBrewery() {
-        //populate brewery 0
-        fetch(beerbuddyApi, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                breweryName: 'Fort Myers Brewing Co'
-            })
-        })
-    }
-
     render() {
         return (
             
