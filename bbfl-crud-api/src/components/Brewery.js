@@ -52,7 +52,7 @@ export const Brewery = (props) => {
             <div className='row'>
 
                 <div className='col-md-4'>
-                    <img className='brewery-logo' src={brewery.logoURL}/>
+                    <img className='brewery-logo mx-auto d-block' src={brewery.logoURL}/>
                 </div>
 
                 <div class='col-md-8'>
@@ -65,7 +65,9 @@ export const Brewery = (props) => {
                                 <th class="border border-1 border-start-0 text-center">Update</th>
                                 <th class="border border-1 border-start-0 text-center">Delete</th>
                             </thead>
-                            <tbody></tbody>
+                            <tbody class='listing-body'>
+                                
+                            </tbody>
                     </table>
                     {/* Display beer information */}
                     { beers({beers, breweryId: brewery.id, deleteBeer})}

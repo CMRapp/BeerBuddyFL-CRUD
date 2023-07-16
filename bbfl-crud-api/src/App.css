@@ -1,12 +1,16 @@
+/*
+  Author: Christian M Rapp | CMR Web Studio
+  Date: July 12, 2023
+  CSS File for Beer Buddy FL with API
+*/
+
 .App {
   text-align: center;
 }
 
 .brewery-logo{
-  float:left;
   width:350px;
   height:auto;
-  margin-top:20px;
 }
 
 #beer-listing {
@@ -15,4 +19,15 @@
 #beer-listing:nth-last-of-type(2){
   background-color:#eeeeee;
   border-radius:10px;
+}
+
+footer p {
+  text-align: left;
+}
+
+.footer-logo{
+   float:right;
+   display:inline; 
+   vertical-align:middle;
+   height:40px;
 }
