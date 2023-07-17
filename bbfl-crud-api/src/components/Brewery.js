@@ -7,6 +7,7 @@ import $ from 'jquery';
 export const Brewery = (props) => {
     const {brewery , updateBrewery } = props;                       //desconstruction
 
+    //deleteBeer functon deletes a beer from a
     const deleteBeer = (beerId) => {
         const updatedBrewery = {        
             ...brewery,                                              // spread operator
@@ -15,15 +16,13 @@ export const Brewery = (props) => {
         updateBrewery(updatedBrewery);                               //call update brewery to update widiv deleted beer info
     }
 
+    //fat arrow function as only one line of code is needed for return clause
+    //addBeer function adds a new beer to the selected brewery
     const addNewBeer = (beer) => updateBrewery({ ...brewery, beers: [...brewery.beers, beer]});
     
-    
-    const beers = () => (
-        
-        <div className='container'>  
-            <table>
-            
-            </table>         
+    //beers function displays beer data
+    const beers = () => (        
+        <div className='container'>          
             {/*use map to display current beers in array*/}
             {brewery.beers.map((beer, index) => (
                 <div key={index}>
@@ -32,9 +31,11 @@ export const Brewery = (props) => {
                         <div className='col-2'>{beer.abv}%</div>
                         <div className='col-2'>{beer.ibu}</div>
                         <div className='col-3'>{beer.style}</div>
-                        <div className='col-1'><button onClick={(e) => deleteBeer(beer.id)}><FontAwesomeIcon icon='fa-refresh'/></button></div>
-                        <div className='col-1'><button onClick={(e) => deleteBeer(beer.id)}><FontAwesomeIcon icon='fa-ban'/></button></div>
-                                
+
+                        {/* FIXME - figure out how to update and use the modal */}
+                        <div className='col-1'><button><FontAwesomeIcon icon='fa-refresh'/></button></div>
+
+                        <div className='col-1'><button onClick={(e) => deleteBeer(beer.id)}><FontAwesomeIcon icon='fa-ban'/></button></div>                                
                     </div>             
                 </div>
             ))}
@@ -47,7 +48,7 @@ export const Brewery = (props) => {
             <div className='row'>
 
                 <div className='col-md-4'>
-                    <img className='brewery-logo mx-auto d-block' src={brewery.logoURL}/>
+                    <img className='brewery-logo mx-auto d-block' src={brewery.logoURL} alt='brewery logo'/>
                 </div>
 
                 <div class='col-md-8'>

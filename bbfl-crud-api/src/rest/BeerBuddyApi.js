@@ -15,23 +15,23 @@ class BeerBuddyApi {
         }
     }
 
-    // //POST
-    // post = async (brewery) => {
-    //     try {
-    //         const resp = await fetch(`${API_URL}`, {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(brewery)
-    //         });
-    //         return await resp.json();
-    //     } catch(e) {
-    //     console.log('Oopsie! Looks like posting your beer had an issue.', e);
-    //      }
-    // }
+    //POST
+    post = async (brewery) => {
+        try {
+            const resp = await fetch(`${API_URL}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(brewery)
+            });
+            return await resp.json();
+        } catch(e) {
+        console.log('Oopsie! Looks like posting your beer had an issue.', e);
+         }
+    }
     
-    //PUT (Update AND Delete for this app)
+    //PUT (Update)
     put = async (brewery) => {
         try {
             const resp = await fetch(`${API_URL}/${brewery.id}`, {
@@ -45,6 +45,18 @@ class BeerBuddyApi {
         } catch(e) {
             console.log('Oopsie! Looks like updating your brewery had an issue.', e);
          }
+    }
+
+    //DELETE
+    delete = async (brewery) => {
+        try {
+            const resp = await fetch(`${API_URL}/${brewery.id}`, {
+                method: 'DELETE'
+            });
+            console.log(resp);
+        } catch(e) {
+            console.log('Oopsie! Looks like deleting your brewery had an issue.', e);
+        }
     }
 }
 
