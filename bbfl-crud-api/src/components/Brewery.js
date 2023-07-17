@@ -10,9 +10,9 @@ export const Brewery = (props) => {
     const deleteBeer = (beerId) => {
         const updatedBrewery = {        
             ...brewery,                                              // spread operator
-            beers: brewery.beers.filter((x) => x.id !== beerId)      //use filter method to find beer to delete
+            beers: brewery.beers.filter((x) => x.id !== beerId)      //use filter medivod to find beer to delete
         };
-        updateBrewery(updatedBrewery);                               //call update brewery to update with deleted beer info
+        updateBrewery(updatedBrewery);                               //call update brewery to update widiv deleted beer info
     }
 
     const addNewBeer = (beer) => updateBrewery({ ...brewery, beers: [...brewery.beers, beer]});
@@ -27,19 +27,14 @@ export const Brewery = (props) => {
             {/*use map to display current beers in array*/}
             {brewery.beers.map((beer, index) => (
                 <div key={index}>
-                    <div>
-                        <table id="beer-listing" class="my-2 table table-warning table-hover border border-1 table-striped">
-                            <tbody>
-                                <tr className='text-center'>
-                                    <td>{beer.beerName}</td>
-                                    <td>{beer.abv}%</td>
-                                    <td>{beer.ibu}</td>
-                                    <td>{beer.style}</td>
-                                    <td><button onClick={(e) => deleteBeer(beer.id)}><FontAwesomeIcon icon='fa-refresh'/></button></td>
-                                    <td><button onClick={(e) => deleteBeer(beer.id)}><FontAwesomeIcon icon='fa-ban'/></button></td>
-                                </tr>
-                            </tbody>                    
-                        </table>
+                    <div className='row table-data'>
+                        <div className='col-3'>{beer.name}</div>
+                        <div className='col-2'>{beer.abv}%</div>
+                        <div className='col-2'>{beer.ibu}</div>
+                        <div className='col-3'>{beer.style}</div>
+                        <div className='col-1'><button onClick={(e) => deleteBeer(beer.id)}><FontAwesomeIcon icon='fa-refresh'/></button></div>
+                        <div className='col-1'><button onClick={(e) => deleteBeer(beer.id)}><FontAwesomeIcon icon='fa-ban'/></button></div>
+                                
                     </div>             
                 </div>
             ))}
@@ -56,24 +51,23 @@ export const Brewery = (props) => {
                 </div>
 
                 <div class='col-md-8'>
-                    <table class=" table table-warning table-hover border border-1 table-striped">
-                            <thead>
-                                <th class="border border-1 border-start-0">Beer Name</th>
-                                <th class="border border-1 border-start-0">ABV</th>
-                                <th class="border border-1 border-start-0">IBU</th>
-                                <th class="border border-1 border-start-0">Style</th>
-                                <th class="border border-1 border-start-0 text-center">Update</th>
-                                <th class="border border-1 border-start-0 text-center">Delete</th>
-                            </thead>
-                            <tbody class='listing-body'>
+                    <div className='table-headers'>
+                        <div className='row'>
+                            <div className='col-3'>Beer Name</div>
+                            <div className='col-2'>ABV</div>
+                            <div className='col-2'>IBU</div>
+                            <div className='col-3'>Style</div>
+                            <div className='col-1'>Update</div>
+                            <div className='col-1'>Delete</div>
+                        </div>
+                    </div>
                                 
-                            </tbody>
-                    </table>
+                            
                     
                     {/* Display beer information */}
                     { beers({beers, breweryId: brewery.id, deleteBeer})}
                     
-                    <NewBeerForm addNewBeer={addNewBeer} />
+                    <NewBeerForm addNewBeer={addNewBeer} brewerName={brewery.name} />
                 </div>
             </div>
         </div>

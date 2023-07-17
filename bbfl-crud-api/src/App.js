@@ -12,7 +12,7 @@ function App() {
   return (
     <div className='App'>
       <Header/>
-      <img src='./craft-beer-hero.png' class='img-fluid border border-danger border-1 rounded' alt='craft beer image'></img>      
+      <img src='./craft-beer-hero.png' class='img-fluid border border-danger my-3 border-1 rounded' alt='craft beer image'></img>      
       <BrewerList/>
       <Footer/>
     </div>

@@ -5,9 +5,9 @@ import ModalHeader from 'react-bootstrap/ModalHeader';
 import ModalFooter from 'react-bootstrap/ModalFooter';
 import ModalTitle from 'react-bootstrap/ModalTitle';
 
-
+//NewBeerForm is a functional (stateless) component
 export const NewBeerForm = (props) => {
-    const [beerName, setBeerName] = useState('');
+    const [name, setName] = useState('');
     const [abv, setAbv] = useState('');
     const [ibu, setIbu] = useState(undefined);
     const [style, setStyle] = useState('');
@@ -23,19 +23,13 @@ export const NewBeerForm = (props) => {
       setIsOpen(false);
     };
 
-   //validate numerical input
-    const handleIbuInput = (e) => {
-    const int = parseInt(e.target.value, 10);
-    setIbu(int >=0 ? int : '');
-   }
-
    const onSubmit = (e) => {
     e.preventDefault();
-    if (beerName && abv && ibu && style ) {             //if all fields ccompleted, submit new beer
-        props.addNewBeer({beerName, abv, ibu, style});
-        setBeerName('');                                //reset form inputs for good UX
+    if (name && abv && ibu && style ) {             //if all fields ccompleted, submit new beer
+        props.addNewBeer({name, abv, ibu, style});
+        setName('');                                //reset form inputs for good UX
         setAbv('');
-        setIbu('');
+        setIbu(undefined);
         setStyle('');
         hideModal();
     } else {
@@ -56,8 +50,8 @@ export const NewBeerForm = (props) => {
                         type='text'
                         className='form-control my-2'
                         placeholder = 'Beer Name'
-                        onChange={(e) => setBeerName(e.target.value)}
-                        value={beerName}
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}
                     />
                     
                     <input 
@@ -72,7 +66,7 @@ export const NewBeerForm = (props) => {
                         type='text'
                         className='form-control my-2'
                         placeholder = 'IBU'
-                        onChange={handleIbuInput}
+                        onChange={(e) => setIbu(e.target.value)}
                         value={ibu}
                     />
 
@@ -93,7 +87,7 @@ export const NewBeerForm = (props) => {
                 <button type='button' class='btn btn-secondary' id='cancelUpdate' onClick={hideModal}>Cancel</button>    
             </ModalFooter>
         </Modal>
-        <button className='btn btn-warning' onClick={showModal}>ADD A BEER</button>     
+        <button className='btn btn-warning my-3' onClick={showModal}>ADD A BEER</button>     
     </div>
    )
 

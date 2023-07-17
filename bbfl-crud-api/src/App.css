@@ -17,8 +17,23 @@
   padding:20px 10px;
 }
 #beer-listing:nth-last-of-type(2){
-  background-color:#eeeeee;
+  background-color:#f2e8c5;
   border-radius:10px;
+}
+
+.table-headers {
+  font-weight:bold;
+  border-bottom:1px solid black;
+
+}
+
+.table-data{
+  padding-top:10px;
+  text-align:center !important;
+}
+
+.table-data button{
+  background-color: #fdc22d;
 }
 
 footer p {
@@ -30,4 +45,12 @@ footer p {
    display:inline; 
    vertical-align:middle;
    height:40px;
+}
+
+.hidden{
+  display:none !important;
+}
+
+.visible{
+  display:block !important;
 }
