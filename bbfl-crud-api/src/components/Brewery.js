@@ -3,24 +3,25 @@ import { NewBeerForm } from './NewBeerForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import $ from 'jquery';
 
-//functional (stateless) component
+//functional (stateless) component| Receives props
 export const Brewery = (props) => {
-    const {brewery , updateBrewery } = props;                       //desconstruction
+    const {brewery , updateBrewery } = props;                       //desconstruction from props to update brewery
+                                                                    //updateBrewery function is passed in from BreweryList
 
     //deleteBeer functon deletes a beer from a
     const deleteBeer = (beerId) => {
         const updatedBrewery = {        
-            ...brewery,                                              // spread operator
-            beers: brewery.beers.filter((x) => x.id !== beerId)      //use filter medivod to find beer to delete
+            ...brewery,                                              // spread operator to iterate over passed beers
+            beers: brewery.beers.filter((x) => x.id !== beerId)      //use filter to find beer to delete beer from array
         };
-        updateBrewery(updatedBrewery);                               //call update brewery to update widiv deleted beer info
+        updateBrewery(updatedBrewery);                               //pass updated array back to updateBrewery method
     }
 
     //fat arrow function as only one line of code is needed for return clause
     //addBeer function adds a new beer to the selected brewery
     const addNewBeer = (beer) => updateBrewery({ ...brewery, beers: [...brewery.beers, beer]});
     
-    //beers function displays beer data
+    //beers is a component inside a component. It is only related to Brewery so it can go here
     const beers = () => (        
         <div className='container'>          
             {/*use map to display current beers in array*/}
