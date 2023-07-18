@@ -5,9 +5,9 @@ import ModalHeader from 'react-bootstrap/ModalHeader';
 import ModalFooter from 'react-bootstrap/ModalFooter';
 import ModalTitle from 'react-bootstrap/ModalTitle';
 
-//NewBeerForm is a functional (stateless) component
+//NewBeerForm is a functional (stateless) component | recieves props
 export const NewBeerForm = (props) => {
-    const [name, setName] = useState('');
+    const [name, setName] = useState('');                   
     const [abv, setAbv] = useState('');
     const [ibu, setIbu] = useState(undefined);
     const [style, setStyle] = useState('');
