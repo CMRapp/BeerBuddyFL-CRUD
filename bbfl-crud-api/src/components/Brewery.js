@@ -17,13 +17,14 @@ export const Brewery = (props) => {
         updateBrewery(updatedBrewery);                               //pass updated array back to updateBrewery method
     }
 
-    //fat arrow function as only one line of code is needed for return clause
-    //addBeer function adds a new beer to the selected brewery
+    // addBeer function adds a new beer to the selected brewery | recieves beer as parameter
+    // antyime props or state is updated, must give new/object or array - NEVER CHANGE EXISTING
     const addNewBeer = (beer) => updateBrewery({ ...brewery, beers: [...brewery.beers, beer]});
     
     //beers is a component inside a component. It is only related to Brewery so it can go here
     const beers = () => (        
-        <div className='container'>          
+        <div className='container'>  
+
             {/*use map to display current beers in array*/}
             {brewery.beers.map((beer, index) => (
                 <div key={index}>
@@ -67,6 +68,7 @@ export const Brewery = (props) => {
                             
                     
                     {/* Display beer information */}
+                    {/* beers is a function that takes props - pass in beers, brewery id, and deleteBeer method */}
                     { beers({beers, breweryId: brewery.id, deleteBeer})}
                     
                     <NewBeerForm addNewBeer={addNewBeer} brewerName={brewery.name} />
