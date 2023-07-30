@@ -39,7 +39,7 @@ export const NewBeerForm = (props) => {
 
    return (
     <div>
-        <Modal show={isOpen} onHide={hideModal}>
+        <Modal show={isOpen} onHide={hideModal} centered>
             <ModalHeader>
                 <ModalTitle>ADD A NEW BEER</ModalTitle>
             </ModalHeader>
